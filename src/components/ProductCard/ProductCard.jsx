@@ -1,15 +1,15 @@
 import { CardContainer, Img } from "./ProductCard.style";
 
-const ProductCard = ({ product }) => {
-  const { titulo, precio, categoria, imagen } = product;
-
+const ProductCard = ({ id, title, price, category, description, image }) => {
   return (
     <CardContainer>
-      <Img src={imagen} alt="" />
+      <Img src={image} alt="" />
       <ul>
-        <h2>{titulo}</h2>
-        <li>{precio}</li>
-        <li>{categoria}</li>
+        <h5>{title}</h5>
+        <h3>${price}</h3>
+        <li>Id:{id}</li>
+        <li>Category: {category}</li>
+        <li>Description: {description}</li>
       </ul>
     </CardContainer>
   );

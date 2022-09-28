@@ -1,27 +1,42 @@
+import { useEffect, useState } from "react";
 import Header from "../components/Common/Header/Header";
 import ProductCard from "../components/ProductCard";
+import { fetchAllProducts } from "../services/product.svc";
 import { ProductsContainer } from "./Home.styled";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
 
   //llamo a la funcion con useEffect
-
-  //el resultado en useState
-
-  const product = {
-    titulo: "Producto 123",
-    imagen:
-      "https://electroluxar.vtexassets.com/arquivos/ids/162337-800-800?v=637965285638770000&width=800&height=800&aspect=true",
-    categoria: "Heladera",
-    precio: 1259.55,
+  const getProducts = async () => {
+    const { error, data } = await fetchAllProducts();
+    if (!error) {
+      setProducts(data);
+    } else {
+      console.log("Existe un error");
+    }
   };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div>
       <Header />
       <ProductsContainer>
-        <ProductCard product={product} />
-        <ProductCard product={product} />
+        {products?.length > 0 &&
+          products.map((product) => (
+            <ProductCard
+              key={product.id}
+              image={product.image}
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              category={product.category}
+              description={product.description}
+            />
+          ))}
       </ProductsContainer>
     </div>
   );
