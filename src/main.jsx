@@ -10,40 +10,24 @@ import Cart from "./Pages/Cart";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <Home />
-      </div>
-    ),
+    element: <Home />,
   },
   {
     path: "/product/:id",
-    element: (
-      <div>
-        <Product />
-      </div>
-    )
+    element: <Product />,
   },
   {
     path: "/category/:name",
-    element: (
-      <div>
-        <Category />
-      </div>
-    )
+    element: <Category />,
   },
   {
     path: "/login",
-    element: (
-      <Login />
-    )
+    element: <Login />,
   },
   {
     path: "/cart",
-    element: (
-      <Cart />
-    )
-  }
+    element: <Cart />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
