@@ -1,51 +1,82 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Catalogo from "../components/Catalogo/Catalogo";
 import Header from "../components/Common/Header/Header";
-import Paginator from "../components/Paginator/Paginator";
-import ProductCard from "../components/ProductCard";
 import { fetchAllProducts } from "../services/product.svc";
-import { ProductsContainer } from "./Home.styled";
+import {
+  getProducts,
+  selectProductsState,
+  setCurrentPage,
+  setNewProducts,
+  setProducts,
+} from "../state/productsSlice";
 
 const Home = () => {
-  const [products, setProducts] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+  const productsState = useSelector(selectProductsState);
+  const dispatch = useDispatch();
 
-  //llamo a la funcion con useEffect
-  const getProducts = async () => {
-    const { error, data } = await fetchAllProducts();
-    if (!error) {
-      setProducts(data);
-    } else {
-      console.log("Existe un error");
+  //Destructurar
+  const { productsList, newProducts, currentPage, isLoading, limit } =
+    productsState;
+
+  //valor computado-> porque depende de products
+  //Armar el redondeo para arriba, nro entero
+
+  let cantPage = Math.ceil(productsList.length / limit); // Cantidad de paginas en total
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
+  const handleReset = () => {
+    dispatch(setNewProducts(data.slice(0, limit)));
+    dispatch(setCurrentPage(1));
+  };
+
+  //Revisamos el render, que no actualizaba el setCurrentPage similar al concepto("asincrono")
+  const handleClickNext = () => {
+    //creamos una variable para tener el valor al instante.
+    let incrementPage = currentPage + 1;
+    if (incrementPage <= cantPage) {
+      dispatch(setCurrentPage(incrementPage));
+      dispatch(
+        setNewProducts(
+          productsList.slice(
+            limit * incrementPage - limit,
+            limit * incrementPage
+          )
+        )
+      );
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      getProducts();
-      setIsLoading(false);
-    }, 1000);
-  }, []);
+  const handleClickPrevious = () => {
+    let decrementPage = currentPage - 1;
+    if (decrementPage > 0) {
+      setCurrentPage(decrementPage);
+      setNewProducts(
+        productsList.slice(limit * decrementPage - limit, limit * decrementPage)
+      );
+    }
+  };
+
+  //Armar un boton con sort
 
   return (
     <div>
       <Header />
+
       {isLoading && <h1>Loading...</h1>}
-      <ProductsContainer>
-        {products?.length > 0 &&
-          products.map((product) => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              id={product.id}
-              title={product.title}
-              price={product.price}
-              category={product.category}
-              description={product.description}
-              rating={product.rating?.rate}
-            />
-          ))}
-      </ProductsContainer>
-      <Paginator />
+
+      <Catalogo
+        newProducts={newProducts}
+        handleReset={handleReset}
+        handleClickNext={handleClickNext}
+        handleClickPrevious={handleClickPrevious}
+        cantPage={cantPage}
+        currentPage={currentPage}
+        productsList={productsList}
+      />
     </div>
   );
 };

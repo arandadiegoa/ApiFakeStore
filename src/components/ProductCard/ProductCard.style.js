@@ -24,6 +24,7 @@ export const List = styled.ul`
 `;
 
 export const Title = styled.h1`
+  text-decoration: none;
   color: black;
   font-size: 20px;
   font-style: italic;
