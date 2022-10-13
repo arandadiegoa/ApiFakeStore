@@ -6,9 +6,8 @@ const Paginator = ({
   handleClick,
   handleClickNext,
   handleClickPrevious,
-  cantPage,
 }) => {
-  const { currentPage, productsList } = useSelector(selectProductsState);
+  const { currentPage, productsList, cantPage } = useSelector(selectProductsState);
   return (
     <div className="container">
       {currentPage !== 1 && <Button onClick={handleClick}>Reset</Button>}

@@ -12,12 +12,12 @@ export const fetchCategories = async () => {
 };
 
 export const fetchCategoryProducts = async (name) => {
-    try {
-        const { data } = await axios.get(
-          `https://fakestoreapi.com/products/categories/${name}`
-        );
-        return { error: false, data };
-      } catch (error) {
-        return { error: true, data: {} };
-      }
-}
+  try {
+    const { data } = await axios.get(
+      `https://fakestoreapi.com/products/category/${name}`
+    );
+    return { error: false, data };
+  } catch (error) {
+    return { error: true, data: {} };
+  }
+};

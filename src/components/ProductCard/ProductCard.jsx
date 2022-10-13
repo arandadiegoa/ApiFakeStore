@@ -1,14 +1,9 @@
 import { CardContainer, Img, List, Title } from "./ProductCard.style";
 
-const ProductCard = ({
-  id,
-  title,
-  price,
-  category,
-  description,
-  image,
-  rating,
-}) => {
+const ProductCard = ({ product }) => {
+  //product por props, y luego la destructuracion
+  const { image, title, id, category, description, rating, price } = product;
+
   return (
     <CardContainer>
       <Img src={image} alt="" />
@@ -18,7 +13,7 @@ const ProductCard = ({
         <li>Id:{id}</li>
         <li>Category: {category}</li>
         <li>Description: {description}</li>
-        <li>Rating: {rating} </li>
+        <li>Rating: {rating?.rate} </li>
       </List>
     </CardContainer>
   );

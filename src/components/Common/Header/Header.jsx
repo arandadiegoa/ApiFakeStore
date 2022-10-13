@@ -13,6 +13,7 @@ import {
   getCategories,
   selectCategoryState,
 } from "../../../state/categorySlice";
+import Login from "../../../Pages/Login";
 
 const Header = () => {
   const categoriesState = useSelector(selectCategoryState);
@@ -22,7 +23,7 @@ const Header = () => {
   const { categoryList, isLoading } = categoriesState;
 
   useEffect(() => {
-    dispatch(getCategories()); 
+    dispatch(getCategories());
   }, []);
 
   return (
@@ -41,6 +42,7 @@ const Header = () => {
                   <Li>{category}</Li>
                 </Link>
               ))}
+            <Link to={`/login`}>Login</Link>
           </ContainerCategories>
         </Container>
       </Nav>

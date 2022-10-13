@@ -4,12 +4,7 @@ import Paginator from "../Paginator/Paginator";
 import ProductCard from "../ProductCard";
 import { ProductsContainer } from "./Catalogo.styled";
 
-const Catalogo = ({
-  handleReset,
-  handleClickNext,
-  handleClickPrevious,
-  cantPage,
-}) => {
+const Catalogo = ({ handleReset, handleClickNext, handleClickPrevious }) => {
   const { newProducts } = useSelector(selectProductsState);
 
   return (
@@ -19,13 +14,15 @@ const Catalogo = ({
           newProducts.map((product) => (
             <ProductCard
               key={product.id}
+              product={product}
+              /* le pasamos el objeto product entero, en vez de propiedad por propiedad
               image={product.image}
               id={product.id}
               title={product.title}
               price={product.price}
               category={product.category}
               description={product.description}
-              rating={product.rating?.rate}
+              rating={product.rating?.rate} */
             />
           ))}
       </ProductsContainer>
@@ -34,7 +31,6 @@ const Catalogo = ({
         handleClick={handleReset}
         handleClickNext={handleClickNext}
         handleClickPrevious={handleClickPrevious}
-        cantPage={cantPage}
       />
     </div>
   );
