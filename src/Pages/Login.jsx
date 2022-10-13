@@ -18,15 +18,15 @@ const Login = () => {
   return (
     <Container>
       <form>
-        <div>
+        <div className="container">
           <Label>Username</Label>
           <Input type="text" name="name" onChange={handleUserName} required />
         </div>
-        <div>
+        <div className="container">
           <Label>Password</Label>
           <Input type="password" name="pass" required />
         </div>
-        <div>
+        <div className="container">
           <Button type="submit">Login</Button>
         </div>
       </form>

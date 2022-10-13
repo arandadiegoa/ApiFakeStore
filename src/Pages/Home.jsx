@@ -9,6 +9,7 @@ import {
   reset,
   selectProductsState,
 } from "../state/productsSlice";
+import { animateScroll as scroll } from "react-scroll";
 
 const Home = () => {
   const productsState = useSelector(selectProductsState);
@@ -21,17 +22,24 @@ const Home = () => {
     dispatch(getProducts());
   }, []);
 
+  const onClickUp = () => {
+    scroll.scrollToTop();
+  };
+
   const handleReset = () => {
     dispatch(reset());
+    onClickUp();
   };
 
   //Revisamos el render, que no actualizaba el setCurrentPage similar al concepto("asincrono")
   const handleClickNext = () => {
     dispatch(incrementPage());
+    onClickUp();
   };
 
   const handleClickPrevious = () => {
     dispatch(decrementPage());
+    onClickUp();
   };
 
   //Armar un boton con sort

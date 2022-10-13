@@ -9,13 +9,14 @@ export const Container = styled.div`
   align-items: center;
   margin: auto;
   margin-top: 150px;
-  width:15%;
-  padding: 60px;
+  width: 15%;
+  padding: 50px;
 `;
 
 export const Label = styled.label`
   font-family: cursive;
   font-size: 1em;
+  margin-left: 15px;
 `;
 
 export const Button = styled.button`
@@ -29,8 +30,10 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 100%;
+  width: 90%;
   padding: 10px 20px;
-  margin: 8px 0;
+  margin: 9px 0;
   box-sizing: border-box;
+  margin-left: 15px;
+  border-radius: 6px;
 `;
