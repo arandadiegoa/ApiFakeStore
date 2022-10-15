@@ -1,13 +1,12 @@
 import axios from "axios";
+import config from "./config.svc";
 
 //Metodo para todos los productos
 
-const initUrl = `https://fakestoreapi.com/products`;
-
 //Esta función es la que trae la data de la API. Recibe por parámetro una nueva url, si no la recibe, usa la url por default.
-export const fetchAllProducts = async (url = initUrl) => {
+export const fetchAllProducts = async () => {
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(`${config.apiUrl}/products`);
     return { error: false, data };
   } catch (error) {
     return { error: true, data: {} };
@@ -18,7 +17,7 @@ export const fetchAllProducts = async (url = initUrl) => {
 
 export const getInfoProduct = async (id) => {
   try {
-    const { data } = await axios.get(`https://fakestoreapi.com/products/${id}`);
+    const { data } = await axios.get(`${config.apiUrl}/products/${id}`);
     return { error: false, data };
   } catch (error) {
     return { error: true, data: {} };

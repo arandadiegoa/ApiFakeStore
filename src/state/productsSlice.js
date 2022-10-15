@@ -53,6 +53,7 @@ const productsSlice = createSlice({
         state.newProducts = accion.payload.slice(0, state.limit);
         state.cantPage = Math.ceil(state.productsList.length / state.limit);
         state.isLoading = false;
+        state.currentPage = 1;
       }
     );
     builder.addMatcher(

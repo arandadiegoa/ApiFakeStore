@@ -1,5 +1,13 @@
+import Header from "../components/Common/Header/Header";
+import usePrivateRoute from "../Hooks/usePrivateRoute";
+
 const Cart = () => {
-    return <div>Cart</div>
-}
+  usePrivateRoute();
+  return (
+    <div>
+      <Header />
+    </div>
+  );
+};
 
 export default Cart;

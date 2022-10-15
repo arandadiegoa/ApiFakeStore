@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Catalogo from "../components/Catalogo/Catalogo";
 import Header from "../components/Common/Header/Header";
+import usePrivateRoute from "../Hooks/usePrivateRoute";
 import {
   decrementPage,
   getProducts,
@@ -9,7 +10,6 @@ import {
   reset,
   selectProductsState,
 } from "../state/productsSlice";
-import { animateScroll as scroll } from "react-scroll";
 
 const Home = () => {
   const productsState = useSelector(selectProductsState);
@@ -23,7 +23,7 @@ const Home = () => {
   }, []);
 
   const onClickUp = () => {
-    scroll.scrollToTop();
+    window.scrollTo(0, 0);
   };
 
   const handleReset = () => {

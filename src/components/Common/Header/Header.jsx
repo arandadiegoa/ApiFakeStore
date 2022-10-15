@@ -13,9 +13,10 @@ import {
   getCategories,
   selectCategoryState,
 } from "../../../state/categorySlice";
-import Login from "../../../Pages/Login";
+import useProfile from "../../../Hooks/useProfile";
 
 const Header = () => {
+  const profile = useProfile();
   const categoriesState = useSelector(selectCategoryState);
   const dispatch = useDispatch();
 
@@ -42,7 +43,17 @@ const Header = () => {
                   <Li>{category}</Li>
                 </Link>
               ))}
-            <Link to={`/login`}>Login</Link>
+            {!profile.isLogged && <Link to={`/login`}>Login</Link>}
+
+            {profile.isLogged && (
+              <div>
+                <Link to={`/cart`}>Cart</Link>
+                <button onClick={profile.handleLogout}>Logout</button>
+              </div>
+            )}
+
+            {profile.id}
+            {profile.user}
           </ContainerCategories>
         </Container>
       </Nav>
