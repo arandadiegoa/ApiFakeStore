@@ -1,6 +1,6 @@
 const config = {
   jwtKey: "token",
-  apiUrl: 'https://fakestoreapi.com'
+  apiUrl: "https://fakestoreapi.com",
 };
 export default config;
 
