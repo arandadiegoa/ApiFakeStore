@@ -7,11 +7,12 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  margin: 15px;
   padding: 10px;
+  width: 100%;
   :hover {
     background-color: #ece4e4;
   }
+
 `;
 
 export const Img = styled.img`
@@ -21,6 +22,7 @@ export const Img = styled.img`
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
+
 `;
 
 export const Title = styled.h1`

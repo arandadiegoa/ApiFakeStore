@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Catalogo from "../components/Catalogo/Catalogo";
 import Header from "../components/Common/Header/Header";
-import usePrivateRoute from "../Hooks/usePrivateRoute";
+
 import {
   decrementPage,
   getProducts,

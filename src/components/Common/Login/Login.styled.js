@@ -11,6 +11,10 @@ export const Container = styled.div`
   margin-top: 150px;
   width: 15%;
   padding: 50px;
+  @media (max-width: 700px) {
+    padding: 10px;
+    width: 50%;
+    }
 `;
 
 export const Label = styled.label`
@@ -25,7 +29,7 @@ export const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid palevioletred;
   border-radius: 3px;
-  margin-left: 250px;
+ 
   margin-top: 25px;
 `;
 

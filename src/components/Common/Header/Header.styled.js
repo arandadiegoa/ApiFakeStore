@@ -14,11 +14,16 @@ export const Navbar = styled.a`
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 700px) {
+    padding: 10px;
+    width: 50%;
+    }
 `;
 export const ContainerCategories = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+ 
 `;
 
 export const Li = styled.li`
