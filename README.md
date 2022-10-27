@@ -8,8 +8,8 @@ Contiene:
 
 -Programación con React.
 
--Implementación con Redux toolkit + Hook de estado + React Router
+-Implementación con Redux toolkit + Hook de estado + React Router.
 
 -Llamada a servicios con Axios.
 
--Manejo de Estilos con Styled-components
+-Manejo de Estilos con Styled-components.
