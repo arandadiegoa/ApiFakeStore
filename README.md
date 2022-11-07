@@ -1,7 +1,7 @@
 # ApiFakeStore
 
-Proyecto web que devuelve Lista de Productosc con sus descripciones, tambien se creo un paginado con un limite de Card de Productos.
-Tambien se puede seleccionar por Categoria. Contiene un total de páginas, total de productos, y página actual.
+Proyecto web que devuelve Lista de Productos con sus descripciones, también se creo un paginado con un limite de Card de Productos, seleccionando por Categoria. 
+Contiene un total de páginas, total de productos, y página actual.
 Se realizo Login/Logout, al estar logueado me permite acceder al Carrito de Compras. 
 
 Contiene:
